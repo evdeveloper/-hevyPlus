@@ -1,0 +1,19 @@
+.button {
+  $this: &;
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--button-font-weight);
+  cursor: pointer;
+  height: var(--button-height);
+  text-transform: var(--button-text-transform);
+  border: var(--button-border);
+  color: var(--button-color);
+  border-radius: var(--button-border-radius);
+  background-color: var(--button-background-color);
+  &:disabled {}
+  &:active {}
+  &:hover {}
+}

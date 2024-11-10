@@ -1,0 +1,94 @@
+:root {
+  --base-font: 'Montserrat', sans-serif;
+  --base-font-size: 16px;
+  --white:#fff;
+  --black:#000;
+  --gray:#D9D9D9;
+  --gray-text: #7E7E7E;
+  --scroll-thumb: var(--gray-text);
+  --scroll-track: var(--gray);
+  --scroll-size: 10px;
+
+  // button settings
+  --button-height: 30px; 
+  --button-border: 1px solid transparent;
+  --button-border-radius: 10px;
+  --button-background-color: transparent;
+  --button-font-weight: bold;
+  --button-text-transform: uppercase;
+  --button-color: var(--white);
+}
+
+@import "utils/libs";
+@import "utils/vars";
+@import "utils/mixins";
+@import "utils/fonts";
+
+html {
+  font-size: var(--base-font-size);
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: var(--base-font);
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+  background-color: var(--white);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--white);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 { margin: 0; }
+
+ul, li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a { text-decoration: none; }
+
+p { margin: 0; }
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video,
+textarea { vertical-align: middle; }
+
+textarea { resize: none; }
+
+section { position: relative; }
+
+input,
+select,
+button,
+textarea { outline: none; border: none; background-color: transparent; }
+
+*, *:before, *:after { box-sizing: border-box; }
+
+
+.content { flex: 1 0 auto; }
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+//Модули
+@import "modules/modules";
