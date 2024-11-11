@@ -41,6 +41,7 @@
     "@splidejs/splide": "^4.1.4",
     "enquire-js": "^0.2.1",
     "imask": "^7.6.1",
+    "just-validate": "^4.3.0",
     "normalize-scss": "^7.0.1"
   }
 }

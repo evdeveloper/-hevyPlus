@@ -49,8 +49,10 @@ html(lang="ru-RU")
       .popup__body
         .popup__title Наш специалист ответит на все ваши вопросы
         form.popup__form(action="/")
-          input(type="text" name="name" class="input" aria-label="Имя" placeholder="Ваше Имя")
-          input(type="tel" name="tel" class="input" aria-label="Телефон" placeholder="Введите ваш номер")
+          .popup__form-field
+            input(type="text" name="name" class="input" aria-label="Имя" placeholder="Ваше Имя")
+          .popup__form-field
+            input(type="tel" name="tel" class="input" aria-label="Телефон" placeholder="Введите ваш номер")
           button(type="submit" class="button font-semibold") Отправить
           .agree Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь c политикой конфиденциальности
 

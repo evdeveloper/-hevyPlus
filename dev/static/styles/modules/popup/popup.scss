@@ -67,7 +67,15 @@
     }
 	}
   &__form {
-    .input { margin-bottom: 36px; }
+    &-field {
+      position: relative;
+      margin-bottom: 36px;
+      .just-validate-error-label {
+        text-align: right;
+        margin-top: 8px;
+        font-size: 14px;
+      }
+    }
   }
 }
 

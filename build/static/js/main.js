@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const phoneMask = document.querySelectorAll('input[name="tel"]');
   const counters = document.querySelectorAll('.counter');
   const observer = new IntersectionObserver(callback);
+  const popupForm = document.querySelector('.popup__form');
+
 
   phoneMask.forEach(phone => {
     let mask = new IMask(phone, { mask: '+{7} (000) 000-00-00' });
@@ -18,6 +20,92 @@ document.addEventListener("DOMContentLoaded", () => {
       mask.updateOptions({ mask: '+{7} (000) 000-00-00', lazy: true });
     });
   });
+
+  function resetPhoneMask(phone) {
+    let mask = new IMask(phone, { mask: '+{7} (000) 000-00-00' });
+    mask.updateValue();
+    mask.value = '';
+    phone.addEventListener('mouseenter', () => {
+      mask.updateOptions({ mask: '+{7} (000) 000-00-00', lazy: false });
+    });
+    phone.addEventListener('mouseleave', () => {
+      mask.updateOptions({ mask: '+{7} (000) 000-00-00', lazy: true });
+    });
+  }
+
+  phoneMask.forEach(phone => {
+    let mask = new IMask(phone, { mask: '+{7} (000) 000-00-00' });
+    phone.addEventListener('mouseenter', () => {
+      mask.updateOptions({ mask: '+{7} (000) 000-00-00', lazy: false });
+    });
+    phone.addEventListener('mouseleave', () => {
+      mask.updateOptions({ mask: '+{7} (000) 000-00-00', lazy: true });
+    });
+  });
+
+  if(popupForm) {
+    const validate = new JustValidate(popupForm, { 
+      errorLabelStyle: { color: "#fd6c6c" },
+    });
+    validate
+    .addField('input[name="name"]', [
+      {rule: "required", errorMessage: "Обязательное поле" },
+      {rule: "customRegexp", value: /^[a-zA-Zа-яА-ЯёЁ]{3,}$/gi, errorMessage: "Мин. 3 символа и только буквы"}
+    ])
+    .addField('input[name="tel"]', [
+      {rule: "required", errorMessage: "Обязательное поле"},
+      {rule: "minLength", value: 18, errorMessage: "Мин. 11 цифр"}
+    ])
+    .onSuccess(function(e) {
+      const form = e.srcElement;
+      const data = JSON.stringify(formSerialize(form));
+      fetchDataForm(data, e);
+    })
+    .onFail(function(e) {
+      const form = this.form;
+    })
+  }
+
+  async function fetchDataForm(data, e) {
+    try {
+      // const response = await fetch('/', {
+      //   method: 'POST',
+      //   body: data
+      // });
+      // if (!response.ok) {
+      //   throw new Error('Сетевая ошибка: ' + response.statusText);
+      // }
+      const form = e.currentTarget;
+      const popupId = e.currentTarget.closest('.popup').getAttribute('data-popup-target');
+      e.submitter.style.opacity = '0.5';
+      e.submitter.textContent = 'Отправка...';
+      e.submitter.style.pointerEvents = 'none';
+      setTimeout(() => {
+        closeModal(popupId);
+        resetPhoneMask(form.querySelector('input[name="tel"]'));
+        form.querySelectorAll('input').forEach(input => input.value = '');
+        e.submitter.style.opacity = '1';
+        e.submitter.textContent = 'Отправить';
+        e.submitter.style.pointerEvents = 'all';
+        alert(data);
+      }, 2000);
+
+    } catch (error) {
+      console.error('Ошибка:', error);
+    }
+  }
+
+  const formSerialize = (formElement) => {
+    const values = {};
+    const inputs = formElement.elements;
+
+    for(let i = 0; i < inputs.length; i++) {
+      if(inputs[i].value !== '') {
+        values[inputs[i].name] = inputs[i].value;
+      }
+    }
+    return values;
+  };
   
   function mobileMenuClose() {
     mobileMenu.classList.remove('active');
@@ -61,10 +149,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function openModal(id) {
     document.querySelector(`[data-popup-target="${id}"]`).classList.add('show');
     body.classList.add('hidden');
+    overlayAdd();
   }
   function closeModal(id) {
     document.querySelector(`[data-popup-target="${id}"]`).classList.remove('show');
     body.classList.remove('hidden');
+    overlayRemove();
   }
 
   const siblings = (elem) => {
@@ -86,12 +176,13 @@ document.addEventListener("DOMContentLoaded", () => {
       content.slideToggle(300);
       siblingsElement.forEach((item) => {
         item.classList.remove('active');
-        item.querySelector('.accordion__body').style.display = 'none';
+        item.querySelector('.accordion__body').slideUp(300);
       });
     }
     if(e.target.closest('[data-popup-open]')) {
       e.preventDefault();
       openModal(e.target.closest('[data-popup-open]').getAttribute('data-popup-open'));
+      if(document.querySelector('.overlay')) return;
       overlayAdd();
     }
     if (e.target.closest('.overlay')) {
