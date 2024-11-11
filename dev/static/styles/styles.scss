@@ -3,19 +3,28 @@
   --base-font-size: 16px;
   --white:#fff;
   --black:#000;
-  --gray:#D9D9D9;
-  --gray-text: #7E7E7E;
+  --main: #231F20;
+  --secondary: #C69B39;
+  --dark-1: #444041;
+  --dark-2: #7B7979;
+  --dark-3: #A7A5A6;
+  --light-1: #DEDEDE;
+  --light-2: #EEEDEE;
+  --light-3: #F8F8F8;
+  --error: #DC2626;
   --scroll-thumb: var(--gray-text);
   --scroll-track: var(--gray);
   --scroll-size: 10px;
+  --duration: 0.3s;
+  --overlay: rgba(42, 51, 66,0.8);
 
   // button settings
-  --button-height: 30px; 
+  --button-height: 56px; 
   --button-border: 1px solid transparent;
-  --button-border-radius: 10px;
-  --button-background-color: transparent;
+  --button-border-radius: 0;
+  --button-background-color: var(--main);
   --button-font-weight: bold;
-  --button-text-transform: uppercase;
+  --button-text-transform: none;
   --button-color: var(--white);
 }
 
@@ -35,7 +44,9 @@ body {
   font-weight: 400;
   padding: 0;
   margin: 0;
+  color: var(--main);
   background-color: var(--white);
+  &.hidden { overflow: hidden; }
 }
 
 .wrapper {
@@ -51,6 +62,54 @@ img {
 }
 
 h1, h2, h3, h4, h5, h6 { margin: 0; }
+h1 {
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 140%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  @include media(769px) { font-size: 28px; }
+  @include media(481px) { font-size: 24px; }
+}
+h2 {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 140%;
+  &.line {
+    position: relative;
+    padding-left: 120px;
+    &::before {
+      content: '';
+      width: 80px;
+      position: absolute;
+      left: 0;
+      top: 32px;
+      height: 3px;
+      background-color: var(--main);
+    }
+    @include media(769px) {
+      padding-left: 72px;
+      &::before { width: 48px; top: 22px; }
+    }
+    @include media(481px) {
+      padding-left: 50px;
+      &::before { width: 30px; top: 16px; }
+    }
+  }
+  @include media(769px) { font-size: 32px; }
+  @include media(481px) { font-size: 24px; }
+}
+h3 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 140%;
+}
+h4 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 140%;
+  letter-spacing: 0.01em;
+}
 
 ul, li {
   list-style-type: none;
@@ -60,7 +119,27 @@ ul, li {
 
 a { text-decoration: none; }
 
-p { margin: 0; }
+p { 
+  margin: 0;
+  &.xl {
+    font-size: 20px;
+    line-height: 170%;
+    letter-spacing: 0.02em;
+    @include media(769px) { 
+      font-size: 16px;
+      line-height: 150%;
+    }
+  }
+  &.l {
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: 0.02em;
+    @include media(769px) {
+      font-size: 14px;
+      line-height: 140%;
+    }
+  }
+}
 
 audio,
 canvas,
@@ -86,9 +165,17 @@ textarea { outline: none; border: none; background-color: transparent; }
 
 .container {
   width: 100%;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 40px;
+  @include media(481px) { padding: 0 16px; }
 }
+
+.mb-15 { 
+  margin-bottom: 3.75rem;
+  @include media(769px) { margin-bottom: 3rem; }
+}
+.font-semibold { font-weight: 600; }
 
 //Модули
 @import "modules/modules";

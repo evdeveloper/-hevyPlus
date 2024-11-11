@@ -1,0 +1,145 @@
+.phone {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--main);
+  &__icon {
+    @include size(24px);
+    fill: var(--main);
+  }
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  height: 38px;
+  border-radius: 0 0 4px 0;
+  font-weight: 500;
+  color: var(--white);
+  background-color: var(--main);
+  &.active {
+    background-color: var(--light-2);
+    color: var(--main);
+  }
+  @include media(481px) {
+    font-size: 12px;
+    height: 25px;
+    padding: 0 8px;
+  }
+}
+
+.socials {
+  $this: &;
+
+  display: flex;
+  gap: 24px;
+  &__item {
+    &:hover {
+      #{$this}__icon { fill: var(--white); }
+    } 
+  }
+  &__icon {
+    @include size(24px);
+    flex: 0 0 auto;
+    fill: rgba(255, 255, 255, 0.3);
+    transition: fill var(--duration) ease;
+  }
+}
+
+.open-menu {
+  display: none;
+  &__icon {
+    width: 56px;
+    height: 30px;
+    fill: var(--main);
+    @include media(481px) {
+      width: 47px;
+      height: 26px;
+    }
+  }
+  @include media(769px) { display: block; }
+}
+
+.mobileMenu {
+  width: 100%;
+  max-width: 360px;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  padding: 24px 16px;
+  color: var(--white);
+  background-color: var(--main);
+  min-height: 100dvh;
+  pointer-events: none;
+  visibility: hidden;
+  transform: translateX(-100%);
+  transition: transform var(--duration) ease;
+  &.active {
+    visibility: visible;
+    pointer-events: all;
+    transform: translateX(0);
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  &__logo {
+    max-width: 95px;
+  }
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 48px;
+    a { color: var(--white); font-weight: 500; }
+  }
+  &__phone {
+    color: var(--white);
+    .phone__icon { fill: var(--white); }
+  }
+  &__close {
+    cursor: pointer;
+    &-icon {
+      @include size(34px);
+      fill: var(--white);
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: var(--overlay);
+  &.active { display: block; }
+}
+
+.input {
+  width: 100%;
+  height: 56px;
+  height: 40px;
+  padding: 0 0 10px;
+  color: var(--dark-1);
+  font-size: 16px;
+  border-bottom: 1px solid var(--main);
+  &::placeholder {
+    transition: opacity var(--duration) ease;
+    color: var(--dark-3);
+  }
+  &:focus::placeholder {
+    opacity: 0;
+  }
+  @include media(481px) {
+    font-size: 14px;
+  }
+}

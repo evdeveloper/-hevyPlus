@@ -1,12 +1,15 @@
 extends template/main
 
 block variables
-  - var title = 'Главная страницаwewewe'
+  - var title = 'Главная страница'
   - var pageClass = 'index-page'
 
 
 
 block content
+  include modules/section/about
+  include modules/section/gallery
+  include modules/section/questions
 
 
 

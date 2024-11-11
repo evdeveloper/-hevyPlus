@@ -1,0 +1,49 @@
+section.s-gallery 
+  .container 
+    h2.line.mb-15 Юмористические вставки или слова
+    .splide.gallery
+      .splide__track.gallery__inner
+        ul.splide__list
+          li.splide__slide.gallery__item
+            .gallery__top
+              a(href="#").gallery__top-link
+                picture.gallery__picture
+                  source(media="(max-width: 481px)" srcset="static/images/img/card/1.jpg")
+                  source(media="(max-width: 769px)" srcset="static/images/img/card/1-tablet.jpg")
+                  img(src="static/images/img/card/1.jpg" alt="Оценка дизайна")
+              a(href="#").tag #tag
+            .gallery__bottom
+              a(href="#").gallery__title оценка дизайна
+              .gallery__descr За прошедшие годы текст Lorem Ipsum получил много версий
+          li.splide__slide.gallery__item
+            .gallery__top
+              a(href="#").gallery__top-link
+                picture.gallery__picture
+                  source(media="(max-width: 481px)" srcset="static/images/img/card/2.jpg")
+                  source(media="(max-width: 769px)" srcset="static/images/img/card/2-tablet.jpg")
+                  img(src="static/images/img/card/2.jpg" alt="Lorem Ipsum")
+              a(href="#").tag #tag
+            .gallery__bottom
+              a(href="#").gallery__title Lorem Ipsum в качестве текста по умолчанию
+              .gallery__descr Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию
+          li.splide__slide.gallery__item
+            .gallery__top
+              a(href="#").gallery__top-link
+                picture.gallery__picture
+                  source(media="(max-width: 481px)" srcset="static/images/img/card/3.jpg")
+                  source(media="(max-width: 769px)" srcset="static/images/img/card/3-tablet.jpg")
+                  img(src="static/images/img/card/3.jpg" alt="Почему он используется?")
+            .gallery__bottom
+              a(href="#").gallery__title Почему он используется?
+              .gallery__descr Это делает предлагаемый здесь генератор единственным настоящим Lorem Ipsum генератором.
+          li.splide__slide.gallery__item
+            .gallery__top
+              a(href="#").gallery__top-link
+                picture.gallery__picture
+                  source(media="(max-width: 481px)" srcset="static/images/img/card/1.jpg")
+                  source(media="(max-width: 769px)" srcset="static/images/img/card/1-tablet.jpg")
+                  img(src="static/images/img/card/1.jpg" alt="Оценка дизайна")
+              a(href="#").tag.active #tag
+            .gallery__bottom
+              a(href="#").gallery__title оценка дизайна
+              .gallery__descr За прошедшие годы текст Lorem Ipsum получил много версий

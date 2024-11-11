@@ -1,0 +1,29 @@
+section.s-about 
+  .container 
+    .about
+      .about__top
+        .about__col
+          h1 Lorem Ipsum используют один и тот же текст
+          p.xl Он использует словарь из более чем 200 латинских слов, а также набор моделей предложений
+          a(href="#" class="button about__btn" data-popup-open="feedback") Оставить заявку 
+        .about__col
+          .about__picture 
+            picture
+              source(media="(max-width: 769px)" srcset="static/images/img/bg-tablet.jpg")
+              img(src="static/images/img/bg.jpg" alt="О компании")
+      .about__bottom
+        p.l Есть много вариантов Lorem Ipsum, но большинство из них имеет не всегда приемлемые модификации, например, юмористические вставки или слова, которые даже отдалённо не напоминают латынь.
+        .progress
+          .progress__item
+            .progress__count.counter(data-count="2012")
+              span 0
+            .progress__descr Lorem Ipsum
+          .progress__item
+            .progress__count.counter(data-count="93") 
+              span 0
+            .progress__descr Приемлемые модификации
+          .progress__item
+            .progress__count.counter(data-count="150") 
+              span 0
+              | +
+            .progress__descr Набор моделей предложений

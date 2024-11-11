@@ -1,0 +1,25 @@
+.header {
+  &__inner {
+    display: flex;
+    align-items: center;
+    padding: 22px 0;
+    gap: 48px;
+    @include media(769px) { justify-content: space-between; }
+  }
+  &__menu {
+    display: flex;
+    gap: 36px;
+    margin-left: auto;
+    a {
+      font-weight: 500;
+      color: var(--main);
+    }
+  }
+  &__menu,
+  &__phone { 
+    @include media(769px) { display: none; }
+  }
+  &__logo {
+    @include media(481px) { max-width: 95px; }
+  }
+}

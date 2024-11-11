@@ -1,4 +1,17 @@
 header.header
+  .container 
+    .header__inner 
+      a(href="#").header__logo.logo 
+        img(src="static/images/img/logo-black.svg" alt="Flex")
+      nav.header__menu
+        a(href="#") Наши проекты 
+        a(href="#") О компании 
+        a(href="#") Контакты 
+      a(href="tel:+78128002030").header__phone.phone
+        +icon('phone','phone__icon') 
+        span +7 (812) 800-20-30
+      .open-menu
+        +icon('burger','open-menu__icon')
 
 
 

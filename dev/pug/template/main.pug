@@ -15,7 +15,7 @@ html(lang="ru-RU")
     meta(name="color-theme" content="")
     link(rel="preconnect" href="https://fonts.googleapis.com")
     link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
-    link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet")
     link(rel="stylesheet" type='text/css' href="static/css/styles.min.css")
 
     <!--[if lt IE 9]>
@@ -27,7 +27,35 @@ html(lang="ru-RU")
       main.content#content
         block content
       include ../modules/footer/footer
+    .mobileMenu 
+      .mobileMenu__header
+        a(href="#").mobileMenu__logo.logo 
+          img(src="static/images/img/logo-white.svg" alt="Flex")
+        .mobileMenu__close 
+          +icon('close','mobileMenu__close-icon')
+      nav.mobileMenu__menu
+        a(href="#") Наши проекты 
+        a(href="#") О компании 
+        a(href="#") Контакты 
+      a(href="tel:+78128002030").mobileMenu__phone.phone
+        +icon('phone','phone__icon') 
+        span +7 (812) 800-20-30
+    .popup.popup-feedback(data-popup-target="feedback")
+      .popup__header
+        .popup__logo.logo
+          img(src="static/images/img/logo-white.svg" alt="Flex")
+        .popup__close(data-popup-close)
+          +icon('close','popup__close-icon')
+      .popup__body
+        .popup__title Наш специалист ответит на все ваши вопросы
+        form.popup__form(action="/")
+          input(type="text" name="name" class="input" aria-label="Имя" placeholder="Ваше Имя")
+          input(type="tel" name="tel" class="input" aria-label="Телефон" placeholder="Введите ваш номер")
+          button(type="submit" class="button font-semibold") Отправить
+          .agree Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь c политикой конфиденциальности
+
 
     script(src="static/js/libs.min.js")
+    script(src="static/js/slidetoggle.js")
     script(src="static/js/main.js")
     block script

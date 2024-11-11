@@ -38,9 +38,9 @@
     "imagemin-pngquant": "^7.0.0"
   },
   "dependencies": {
-    "imask": "^7.1.2",
-    "just-validate": "^4.2.0",
-    "normalize-scss": "^7.0.1",
-    "swiper": "^10.0.4"
+    "@splidejs/splide": "^4.1.4",
+    "enquire-js": "^0.2.1",
+    "imask": "^7.6.1",
+    "normalize-scss": "^7.0.1"
   }
 }
